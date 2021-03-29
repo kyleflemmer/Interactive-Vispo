@@ -3,7 +3,7 @@
   prepared for: CMDA 601
   date: 3/29/21
 
-  - This program is presents four interactive visual poems
+  - This program presents four interactive visual poems
   - The content of each poem reflects the type of user interaction programmed in
   - Poems are loaded in from external text files, as are fonts, sprites, and a sound file
   - Libraries for video, sound, and .gif animation are used
