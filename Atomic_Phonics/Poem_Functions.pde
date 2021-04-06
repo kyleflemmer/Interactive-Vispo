@@ -7,6 +7,10 @@ String[] poem2;
 String[] poem3;
 String[] characterList;
 StringList displayList;
+//declaration of poem background images
+PImage waveBG;
+PImage halflifeBG;
+PImage repelBG;
 
 //declares poems as arrays of letter objects
 //indexed by line and position in the poem
@@ -15,6 +19,7 @@ Letters poemHalflife[][] = new Letters[4][27];  //INITIALIZED WITH SET PARAMS
 Letters poemRepel[][] = new Letters[4][27];  //INITIALIZED WITH SET PARAMS
 
 //function to load poems into string arrays
+//load poem background images
 //and initialize arrays of letter objects
 void poemInit() {
   poem1 = loadStrings("Poem1.txt");
@@ -23,9 +28,9 @@ void poemInit() {
   characterList = loadStrings("letterlist.txt");
   displayList = new StringList();
   listFiller();
-  //for (int x = 0; x < characterList.length; x++) {
-  //  displayList.append(characterList[x]);
-  //}
+  waveBG = loadImage("waveBG.png");
+  halflifeBG = loadImage("halflifeBG.png");
+  repelBG = loadImage("repelBG.png");
 //initialize each poem as an array of letter objects
   int letterSpacing;
 //wave poem init
@@ -75,6 +80,8 @@ void listFiller() {
 //displays poem instructions
 void wavePoem() {
   background(#b9e2eb);
+  imageMode(CORNER);
+  image(waveBG,0,0);
   for (int r = 0; r < poem1.length; r++) {
     for (int l = 0; l < poem1[0].length(); l++) {
       poemWave[r][l].display();
@@ -99,11 +106,12 @@ void wavePoem() {
 //displays poem instructions
 void halflifePoem() {
   background(#b9ebcb);
+  imageMode(CORNER);
+  image(halflifeBG,0,0);
   for (int r = 0; r < poem2.length; r++) {
     for (int l = 0; l < poem2[0].length(); l++) {
       poemHalflife[r][l].display();
       poemHalflife[r][l].shake();
-      poemHalflife[r][l].halflife();
       if (keyPressed == true && poemHalflife[r][l].letter == key) {
         poemHalflife[r][l].erase();
       }
@@ -122,6 +130,8 @@ void halflifePoem() {
 //position reset by mouse click
 void repelPoem() {
   background(#deb9eb);
+  imageMode(CORNER);
+  image(repelBG,0,0);
   for (int r = 0; r < poem3.length; r++) {
     for (int l = 0; l < poem3[0].length(); l++) {
       poemRepel[r][l].display();
