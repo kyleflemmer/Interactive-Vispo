@@ -11,6 +11,8 @@
   - Variety of user interactions, including mouse, keyboard, and webcam inputs
   
   SONG CREDIT: PHANTOM BRICKWORKS IV by Bibio, Warp Records (2018)
+  IMAGE CREDIT: poem scene BG images adapted from Super Mario World
+                background rip by Ultramario, MFGG.com (2007)
 */
 
 //libraries
@@ -30,6 +32,7 @@ int poemScene;
 PFont poemFont;
 PFont appFont;
 int timeInit;
+PImage cursor;
 
 //main void setup function sets the window size
 //loads fonts, title animation, and sound file
@@ -39,8 +42,10 @@ int timeInit;
 void setup() {
   size(1000,800);
   background(75);
+  noCursor();
   poemFont = createFont("Courier New Bold", 24, true);
   appFont = createFont("OCR A Std", 20, true);
+  cursor = loadImage("cursor.png");
   titleAnimation = new Gif(this, "title.gif");
   titleAnimationSmall = new Gif(this, "titleSmall.gif");
   song = new SoundFile(this, "song.mp3");
@@ -54,8 +59,11 @@ void setup() {
 
 //main void draw fuction calls poem scene test function
 //to display and navigate between poem scenes
+//replaces cursor with custom image
 void draw() {
   poemSceneTest();
+  imageMode(CORNER);
+  image(cursor,mouseX,mouseY);
 }
 
 //fuction tests poemScene variable
@@ -96,6 +104,7 @@ void titleScene() {
   fill(175);
   text("for CMDA 601", width-75, 675);
   text("April 2021", width-75, 710);
+  imageMode(CENTER);
   image(titleAnimation, width/2, 300);
   titleAnimation.play();
   startButton.display();
@@ -107,6 +116,7 @@ void titleScene() {
 //displays program instructions
 void menuScene() {
   background(75);
+  imageMode(CENTER);
   image(titleAnimationSmall, 290, 175);
   titleAnimationSmall.play();
   marcSprite.display();
