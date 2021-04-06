@@ -132,8 +132,8 @@ void repelPoem() {
   textFont(appFont);
   textAlign(LEFT, CENTER);
   fill(255);
-  text("use the mouse", 150, height-120);
-  text("to repel letters", 150, height-95);
+  text("cursor repels letters", 150, height-120);
+  text("click to restore", 150, height-95);
 }
 
 //function for webcam poem scene

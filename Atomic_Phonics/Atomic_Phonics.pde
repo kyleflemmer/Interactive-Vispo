@@ -23,6 +23,7 @@ WebCam camera;
 Capture cam;
 SoundFile song;
 Gif titleAnimation;
+Gif titleAnimationSmall;
 
 //global application variables
 int poemScene;
@@ -37,10 +38,11 @@ int timeInit;
 //sets poemScene to 0 for welcome scene
 void setup() {
   size(1000,800);
-  background(50);
+  background(75);
   poemFont = createFont("Courier New Bold", 24, true);
   appFont = createFont("OCR A Std", 20, true);
   titleAnimation = new Gif(this, "title.gif");
+  titleAnimationSmall = new Gif(this, "titleSmall.gif");
   song = new SoundFile(this, "song.mp3");
   song.loop();
   //**initialize webcam and capture, and "start"
@@ -54,7 +56,6 @@ void setup() {
 //to display and navigate between poem scenes
 void draw() {
   poemSceneTest();
-  //println(key);
 }
 
 //fuction tests poemScene variable
@@ -85,7 +86,7 @@ void poemSceneTest() {
 //displays animated title
 //displays start button
 void titleScene() {
-  background(50);
+  background(75);
   textFont(appFont);
   fill(255);
   textAlign(CENTER, CENTER);
@@ -105,7 +106,15 @@ void titleScene() {
 //displays and animates sprites
 //displays program instructions
 void menuScene() {
-  background(50);
+  background(75);
+  image(titleAnimationSmall, 290, 175);
+  titleAnimationSmall.play();
+  marcSprite.display();
+  kyleSprite.display();
+  textFont(appFont);
+  fill(255);
+  textAlign(CENTER, CENTER);
+  text("choose your writer", 290, 700);
   poem1Button.display();
   poem2Button.display();
   poem3Button.display();
