@@ -145,8 +145,3 @@ void repelPoem() {
   text("cursor repels letters", 150, height-120);
   text("click to restore", 150, height-95);
 }
-
-//function for webcam poem scene
-void webcamPoem() {
-  
-}

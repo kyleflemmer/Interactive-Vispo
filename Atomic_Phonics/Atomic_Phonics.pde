@@ -13,44 +13,27 @@
   SONG CREDIT: PHANTOM BRICKWORKS IV by Bibio, Warp Records (2018)
   IMAGE CREDIT: poem scene BG images adapted from Super Mario World
                 background rip by Ultramario, MFGG.com (2007)
+  SPRITES: Sprites drawn in Aseprite pixel art and sprite editor
 */
-
-//libraries
-import gifAnimation.*;
-import processing.video.*;
-import processing.sound.*;
-
-//declaring media objects
-WebCam camera;
-Capture cam;
-SoundFile song;
-Gif titleAnimation;
-Gif titleAnimationSmall;
-
-//global application variables
-int poemScene;
-PFont poemFont;
-PFont appFont;
-int timeInit;
-PImage cursor;
 
 //main void setup function sets the window size
 //loads fonts, title animation, and sound file
-//**initialize webcam, capture, and "start"
+//initialize webcam
 //calls functions to initialize button, poem, and sprite objects
-//sets poemScene to 0 for welcome scene
+//sets poemScene to -1 for title scene
 void setup() {
   size(1000,800);
   background(75);
   noCursor();
   poemFont = createFont("Courier New Bold", 24, true);
   appFont = createFont("OCR A Std", 20, true);
+  opticFont = createFont("Courier New Bold", 12, true);
   cursor = loadImage("cursor.png");
   titleAnimation = new Gif(this, "title.gif");
   titleAnimationSmall = new Gif(this, "titleSmall.gif");
   song = new SoundFile(this, "song.mp3");
   song.loop();
-  //**initialize webcam and capture, and "start"
+  userWebcam = new Capture(this,1000,800);
   buttonInit();
   poemInit();
   spriteInit();
@@ -64,69 +47,4 @@ void draw() {
   poemSceneTest();
   imageMode(CORNER);
   image(cursor,mouseX,mouseY);
-}
-
-//fuction tests poemScene variable
-//calls appropriate poem function
-//and displays back button in poem scenes
-void poemSceneTest() {
-  if (poemScene == -1) {
-    titleScene();
-  } else if (poemScene == 0) {
-    menuScene();
-  } else if (poemScene == 1){
-    wavePoem();
-    backButton.display();
-  } else if (poemScene == 2){
-    halflifePoem();
-    backButton.display();
-  } else if (poemScene == 3){
-    repelPoem();
-    backButton.display();
-  } else if (poemScene == 4){
-    background(#ebb9b9);
-    backButton.display();
-  }
-}
-
-//funtion for the title scene
-//displays static text in application font
-//displays animated title
-//displays start button
-void titleScene() {
-  background(75);
-  textFont(appFont);
-  fill(255);
-  textAlign(CENTER, CENTER);
-  text("Marc and Kyle present:", width/2, 140);
-  text("INTERACTIVE VISUAL POETRY PROGRAM", width/2, 465);
-  textAlign(RIGHT, CENTER);
-  fill(175);
-  text("for CMDA 601", width-75, 675);
-  text("April 2021", width-75, 710);
-  imageMode(CENTER);
-  image(titleAnimation, width/2, 300);
-  titleAnimation.play();
-  startButton.display();
-}
-
-//function for the menu scene
-//displays poem menu buttons
-//displays and animates sprites
-//displays program instructions
-void menuScene() {
-  background(75);
-  imageMode(CENTER);
-  image(titleAnimationSmall, 290, 175);
-  titleAnimationSmall.play();
-  marcSprite.display();
-  kyleSprite.display();
-  textFont(appFont);
-  fill(255);
-  textAlign(CENTER, CENTER);
-  text("choose your writer", 290, 700);
-  poem1Button.display();
-  poem2Button.display();
-  poem3Button.display();
-  poem4Button.display();
 }

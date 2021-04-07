@@ -99,8 +99,9 @@ class Buttons {
   //method changes poemScene when mouse is pressed over button
   //sets letter alpha when wave poem button is pressed
   //sets letter alpha and position when halflife poem button is pressed
+  //turns off webcam returning to menu from optic poem
   void click() {    
-    if (buttonState == 1 && mousePressed == true) {
+    if (buttonState == 1 && mousePressed == true && buttonType != 0) {
       poemScene = buttonType;
       if (poem1Button.buttonState == 1) {
         for (int r = 0; r < poem1.length; r++) {
@@ -117,7 +118,12 @@ class Buttons {
             poemHalflife[r][l].positionReset();
           }
         }
+      } else if (poem4Button.buttonState == 1) {
+        userWebcam.start();
       }
+    } else if (buttonState == 1 && mousePressed == true && buttonType == 0) {
+      poemScene = buttonType;
+      userWebcam.stop();
     }
   }
   
