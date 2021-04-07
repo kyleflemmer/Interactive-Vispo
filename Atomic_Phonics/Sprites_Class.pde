@@ -14,8 +14,6 @@ Sprites kyleSprite;
 //function to load gif images into strings
 //and initialize sprite objects
 void spriteInit() {
-  //marcFrames = Gif.getPImages(this, "marc.gif");
-  //kyleFrames = Gif.getPImages(this, "kyle.gif");
   marcFrames = new Gif[3];
   kyleFrames = new Gif[3];
   marcFrames[0] = new Gif(this, "marcStand.gif");
@@ -66,7 +64,8 @@ class Sprites {
     click();
   }
   
-  //Method animates sprites
+  //method detects mouse over sprite
+  //changes sprite object to hover state
   void hover() {
     if (mouseX >= (spriteX-(spriteWidth/2)) && mouseX <= (spriteX+(spriteWidth/2))
       && mouseY >= (spriteY-(spriteHeight/2)) && mouseY <= (spriteY+(spriteHeight/2))) {
@@ -76,7 +75,8 @@ class Sprites {
     }
   }
   
-  //Method displays instuctions when hovering over sprite
+  //method displays instuctions when hovering over sprite
+  //speech bubble and text uniqe to each sprite
   void click() {
     if (mousePressed == true && mouseX >= (spriteX-(spriteWidth/2)) && mouseX <= (spriteX+(spriteWidth/2))
       && mouseY >= (spriteY-(spriteHeight/2)) && mouseY <= (spriteY+(spriteHeight/2))) {
@@ -92,7 +92,7 @@ class Sprites {
         text("the menu. You can",160,325);
         text("interact with text",160,350);
         text("using the keyboard",160,375);
-        text("and/or mouse!",160,400);
+        text("mouse, or webcam!",160,400);
       } else if (spriteType == 1) {
         noStroke();
         fill(255);
