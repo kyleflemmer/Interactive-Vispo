@@ -66,7 +66,7 @@ void titleScene() {
   startButton.display();
   fadeIn();
   if (startButton.buttonState == 1 && mousePressed == true) {
-    fadeIn = 500;
+    fadeIn = 450;
   }
 }
 

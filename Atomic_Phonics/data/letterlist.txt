@@ -4,10 +4,8 @@ c
 d
 e
 f
-g
 h
 i
-j
 k
 l
 m
@@ -23,4 +21,5 @@ v
 w
 x
 y
-z
+.
+,
