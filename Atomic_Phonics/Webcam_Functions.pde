@@ -9,6 +9,7 @@ Capture userWebcam;
 //tests pixel brightness on a grid
 //displays letters according to brightness on grid
 void opticPoem() {
+
   if (userWebcam.available() == true) {
     userWebcam.read();
   }
@@ -42,9 +43,10 @@ void opticPoem() {
   }
  }
 }
- if (mousePressed && (mouseButton == RIGHT)) {
-    screenCapture (); 
-  }
+  if (mousePressed && (mouseButton == RIGHT)) {
+  screenCapture ();
+  
+ }
   noStroke();
   fill(0, 50);
   rect(142, height-135, 230, 60);
@@ -57,7 +59,7 @@ void opticPoem() {
 
 //funtion for inverting letter fill when mouse pressed
 void fillTest() {
-  if (mousePressed == true) {
+  if (mousePressed && (mouseButton == LEFT) == true) {
     fill(#997979);
   } else {
     fill(0);
@@ -69,4 +71,5 @@ void screenCapture () {
   int min = minute ();
   int sec = second ();
   save("ConcretePoem" + "_" + day + "-" + min + "-" + sec + ".png");
+  background (255);
 }
