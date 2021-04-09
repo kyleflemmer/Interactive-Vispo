@@ -1,6 +1,7 @@
 //this is a class for the optic poem functions
 //using the users's webcam for input
-//function for inverting letter and bg colors
+//function for inverting letter and bg colors on left click
+//function for saving image of poem on right click
 
 Capture userWebcam;
 
@@ -13,7 +14,7 @@ void opticPoem() {
   if (userWebcam.available() == true) {
     userWebcam.read();
   }
-  if (mousePressed && (mouseButton == LEFT) == true) {
+  if (mousePressed && (mouseButton == LEFT)) {
     background(0);
   } else {
     background(#ebb9b9);
@@ -44,32 +45,32 @@ void opticPoem() {
  }
 }
   if (mousePressed && (mouseButton == RIGHT)) {
-  screenCapture ();
-  
- }
+    screenCapture ();
+  }
   noStroke();
   fill(0, 50);
-  rect(142, height-135, 230, 60);
+  rect(142, height-135, 300, 60);
   textFont(appFont);
   textAlign(LEFT, CENTER);
   fill(255);
-  text("smile!!!", 150, height-120);
-  text("click to invert", 150, height-95);
+  text("left click to invert", 150, height-120);
+  text("right click to save", 150, height-95);
 }
 
-//funtion for inverting letter fill when mouse pressed
+//funtion for inverting letter fill when left mouse pressed
 void fillTest() {
-  if (mousePressed && (mouseButton == LEFT) == true) {
+  if (mousePressed && (mouseButton == LEFT)) {
     fill(#997979);
   } else {
     fill(0);
  }
 }
 
+//function for saving an image of the poem
 void screenCapture () {
   int day = day ();
   int min = minute ();
   int sec = second ();
-  save("ConcretePoem" + "_" + day + "-" + min + "-" + sec + ".png");
-  background (255);
+  save("SavedImages/" + "OpticPoem" + "_" + day + "-" + min + "-" + sec + ".png");
+  background(255);
 }

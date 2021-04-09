@@ -26,7 +26,7 @@ void buttonInit() {
   Button2 = Gif.getPImages(this, "Button2.gif");
   Button3 = Gif.getPImages(this, "Button3.gif");
   Button4 = Gif.getPImages(this, "Button4.gif");
-//back button
+//navigation buttons
   startButton = new Buttons(-1);
   backButton = new Buttons(0);
 //poem menu buttons

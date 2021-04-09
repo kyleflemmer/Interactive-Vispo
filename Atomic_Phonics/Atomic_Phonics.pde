@@ -9,6 +9,7 @@
   - Libraries for video, sound, and .gif animation are used
   - Navigate to each poem and back using navigational buttons
   - Variety of user interactions, including mouse, keyboard, and webcam inputs
+  - Images from the webcam poem can be saved
   
   SONG CREDIT: PHANTOM BRICKWORKS IV by Bibio, Warp Records (2018)
   IMAGE CREDIT: poem scene BG images adapted from Super Mario World
