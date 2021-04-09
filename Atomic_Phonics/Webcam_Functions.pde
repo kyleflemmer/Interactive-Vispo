@@ -9,10 +9,11 @@ Capture userWebcam;
 //tests pixel brightness on a grid
 //displays letters according to brightness on grid
 void opticPoem() {
+
   if (userWebcam.available() == true) {
     userWebcam.read();
   }
-  if (mousePressed == true) {
+  if (mousePressed && (mouseButton == LEFT) == true) {
     background(0);
   } else {
     background(#ebb9b9);
@@ -21,30 +22,34 @@ void opticPoem() {
   textFont(opticFont);
   for (int y = 4; y < height; y += 8) {
     for (int x = 4; x < width; x += 8) {
-      if(brightness(userWebcam.get(x,y)) < 20) {
+      if (brightness(userWebcam.get(x, y)) < 20) {
         fillTest();
-        text("P",x,y);
-      } else if (brightness(userWebcam.get(x,y)) >= 20 && brightness(userWebcam.get(x,y)) < 60) {
-       fillTest();
-        text("O",x,y);
-      } else if (brightness(userWebcam.get(x,y)) >= 60 && brightness(userWebcam.get(x,y)) < 90) {
+        text("P", x, y);
+      } else if (brightness(userWebcam.get(x, y)) >= 20 && brightness(userWebcam.get(x, y)) < 60) {
         fillTest();
-        text("t",x,y);
-      } else if (brightness(userWebcam.get(x,y)) >= 90 && brightness(userWebcam.get(x,y)) < 120) {
+        text("O", x, y);
+      } else if (brightness(userWebcam.get(x, y)) >= 60 && brightness(userWebcam.get(x, y)) < 90) {
         fillTest();
-        text("c",x,y);
-      } else if (brightness(userWebcam.get(x,y)) >= 120 && brightness(userWebcam.get(x,y)) < 160) {
+        text("t", x, y);
+      } else if (brightness(userWebcam.get(x, y)) >= 90 && brightness(userWebcam.get(x, y)) < 120) {
         fillTest();
-        text("i",x,y);
-      } else if (brightness(userWebcam.get(x,y)) >= 160 && brightness(userWebcam.get(x,y)) < 200) {
+        text("c", x, y);
+      } else if (brightness(userWebcam.get(x, y)) >= 120 && brightness(userWebcam.get(x, y)) < 160) {
         fillTest();
-        text(".",x,y);
-      }
-    }
+        text("i", x, y);
+      } else if (brightness(userWebcam.get(x, y)) >= 160 && brightness(userWebcam.get(x, y)) < 200) {
+        fillTest();
+        text(".", x, y);
   }
+ }
+}
+  if (mousePressed && (mouseButton == RIGHT)) {
+  screenCapture ();
+  
+ }
   noStroke();
   fill(0, 50);
-  rect(142,height-135,230,60);
+  rect(142, height-135, 230, 60);
   textFont(appFont);
   textAlign(LEFT, CENTER);
   fill(255);
@@ -54,9 +59,17 @@ void opticPoem() {
 
 //funtion for inverting letter fill when mouse pressed
 void fillTest() {
-  if (mousePressed == true) {
+  if (mousePressed && (mouseButton == LEFT) == true) {
     fill(#997979);
   } else {
     fill(0);
-  }
+ }
+}
+
+void screenCapture () {
+  int day = day ();
+  int min = minute ();
+  int sec = second ();
+  save("ConcretePoem" + "_" + day + "-" + min + "-" + sec + ".png");
+  background (255);
 }
