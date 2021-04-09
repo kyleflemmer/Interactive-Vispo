@@ -82,7 +82,7 @@ class Letters {
   int halflife() {
     int time = millis() - timeInit;
     int charRemain;
-    charRemain = int(27 * exp(-.000025*time));
+    charRemain = int(26 * exp(-.000025*time));
     return charRemain;
   }
   

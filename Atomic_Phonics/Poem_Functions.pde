@@ -13,10 +13,10 @@ PImage halflifeBG;
 PImage repelBG;
 
 //declares poems as arrays of letter objects
-//indexed by line and position in the poem
-Letters poemWave[][] = new Letters[4][27];  //INITIALIZED WITH SET PARAMS
-Letters poemHalflife[][] = new Letters[4][27];  //INITIALIZED WITH SET PARAMS
-Letters poemRepel[][] = new Letters[4][27];  //INITIALIZED WITH SET PARAMS
+//indexed by line and position in each poem
+Letters poemWave[][] = new Letters[4][28];
+Letters poemHalflife[][] = new Letters[6][32];
+Letters poemRepel[][] = new Letters[8][32];
 
 //function to load poems into string arrays
 //load poem background images
@@ -34,7 +34,7 @@ void poemInit() {
 //initialize each poem as an array of letter objects
   int letterSpacing;
 //wave poem init
-  float waveXinit[] = {250, 150, 275, 350};
+  float waveXinit[] = {250, 150, 275, 400};
   float waveYinit[] = {150, 300, 450, 600};
   letterSpacing = 18;
   for (int r = 0; r < poem1.length; r++) {
@@ -44,18 +44,18 @@ void poemInit() {
     }
   }
 //halflife poem init
-  float halflifeXinit[] = {250, 150, 275, 350};
-  float halflifeYinit[] = {150, 300, 450, 600};
+  float halflifeXinit[] = {200, 200, 200, 200, 200, 200};
+  float halflifeYinit[] = {175, 250, 325, 400, 475, 550};
   letterSpacing = 18;
   for (int r = 0; r < poem2.length; r++) {
     for (int l = 0; l < poem2[r].length(); l++) {
-      poemHalflife[r][l] = new Letters(poem3[r].charAt(l), halflifeXinit[r], halflifeYinit[r]);
+      poemHalflife[r][l] = new Letters(poem2[r].charAt(l), halflifeXinit[r], halflifeYinit[r]);
       halflifeXinit[r] += letterSpacing;
     }
   }
 //repel poem init
-  float repelXinit[] = {250, 150, 275, 350};
-  float repelYinit[] = {150, 300, 450, 600};
+  float repelXinit[] = {200, 200, 200, 200, 200, 200, 200, 200};
+  float repelYinit[] = {200, 250, 300, 350, 400, 450, 500, 550};
   letterSpacing = 18;
   for (int r = 0; r < poem3.length; r++) {
     for (int l = 0; l < poem3[r].length(); l++) {
