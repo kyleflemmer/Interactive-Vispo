@@ -34,7 +34,7 @@ void poemInit() {
 //initialize each poem as an array of letter objects
   int letterSpacing;
 //wave poem init
-  float waveXinit[] = {250, 150, 275, 400};
+  float waveXinit[] = {300, 150, 275, 525};
   float waveYinit[] = {150, 300, 450, 600};
   letterSpacing = 18;
   for (int r = 0; r < poem1.length; r++) {
@@ -92,11 +92,14 @@ void wavePoem() {
       poemWave[r][l].alphaReset();
     }
   }
+  noStroke();
+  fill(0, 50);
+  rect(142, height-135, 265, 60);
   textFont(appFont);
   textAlign(LEFT, CENTER);
   fill(255);
-  text("use the keyboard", 150, height-120);
-  text("to emphasize letters", 150, height-95);
+  text("hold down keys to", 150, height-120);
+  text("emphasize letters", 150, height-95);
 }
 
 //function for halflife poem scene
@@ -118,10 +121,13 @@ void halflifePoem() {
       poemHalflife[r][l].decay();
     }
   }
+  noStroke();
+  fill(0, 50);
+  rect(142, height-135, 280, 60);
   textFont(appFont);
   textAlign(LEFT, CENTER);
   fill(255);
-  text("use the keyboard", 150, height-120);
+  text("type on keyboard", 150, height-120);
   text("to destroy letters", 150, height-95);
 }
 
@@ -139,9 +145,12 @@ void repelPoem() {
       poemRepel[r][l].positionReset();
     }
   }
+  noStroke();
+  fill(0, 50);
+  rect(142, height-135, 320, 60);
   textFont(appFont);
   textAlign(LEFT, CENTER);
   fill(255);
   text("cursor repels letters", 150, height-120);
-  text("click to restore", 150, height-95);
+  text("click mouse to reset", 150, height-95);
 }

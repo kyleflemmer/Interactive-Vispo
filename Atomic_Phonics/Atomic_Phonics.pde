@@ -34,7 +34,16 @@ void setup() {
   titleAnimationSmall = new Gif(this, "titleSmall.gif");
   song = new SoundFile(this, "song.mp3");
   song.loop();
-  userWebcam = new Capture(this,1000,800);
+  cameras = Capture.list();
+  if (cameras.length == 0) {
+    println("There are no cameras available for capture.");
+  } else {
+    println("Available cameras:");
+    for (int i = 0; i < cameras.length; i++) {
+      println(cameras[i]);
+    }
+    userWebcam = new Capture(this,1000,800, cameras[0]);
+  }
   buttonInit();
   poemInit();
   spriteInit();

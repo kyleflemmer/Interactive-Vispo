@@ -119,11 +119,15 @@ class Buttons {
           }
         }
       } else if (poem4Button.buttonState == 1) {
-        userWebcam.start();
+        if (cameras.length != 0) {
+          userWebcam.start();
+        }
       }
     } else if (buttonState == 1 && mousePressed == true && buttonType == 0) {
       poemScene = buttonType;
-      userWebcam.stop();
+      if (cameras.length != 0) {
+        userWebcam.stop();
+      }
     }
   }
   
